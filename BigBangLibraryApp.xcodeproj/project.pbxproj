@@ -11,6 +11,8 @@
 		4FC5C5832BDC20ED000DFD11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC5C5822BDC20ED000DFD11 /* ContentView.swift */; };
 		4FC5C5852BDC20F0000DFD11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FC5C5842BDC20F0000DFD11 /* Assets.xcassets */; };
 		4FC5C5882BDC20F0000DFD11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FC5C5872BDC20F0000DFD11 /* Preview Assets.xcassets */; };
+		4FC5C5962BDC233C000DFD11 /* BigBangTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FC5C5952BDC233C000DFD11 /* BigBangTest.json */; };
+		4FC5C5982BDC2343000DFD11 /* BigBang.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FC5C5972BDC2343000DFD11 /* BigBang.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		4FC5C5822BDC20ED000DFD11 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4FC5C5842BDC20F0000DFD11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FC5C5872BDC20F0000DFD11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4FC5C5952BDC233C000DFD11 /* BigBangTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BigBangTest.json; sourceTree = "<group>"; };
+		4FC5C5972BDC2343000DFD11 /* BigBang.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BigBang.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +55,12 @@
 		4FC5C57F2BDC20ED000DFD11 /* BigBangLibraryApp */ = {
 			isa = PBXGroup;
 			children = (
-				4FC5C5802BDC20ED000DFD11 /* BigBangLibraryAppApp.swift */,
-				4FC5C5822BDC20ED000DFD11 /* ContentView.swift */,
-				4FC5C5842BDC20F0000DFD11 /* Assets.xcassets */,
+				4FC5C5942BDC21DD000DFD11 /* System */,
+				4FC5C58E2BDC21AC000DFD11 /* Views */,
+				4FC5C5902BDC21BB000DFD11 /* ViewModels */,
+				4FC5C5912BDC21C2000DFD11 /* Interactor */,
+				4FC5C5922BDC21C9000DFD11 /* Model */,
+				4FC5C5932BDC21D0000DFD11 /* Resources */,
 				4FC5C5862BDC20F0000DFD11 /* Preview Content */,
 			);
 			path = BigBangLibraryApp;
@@ -62,9 +69,64 @@
 		4FC5C5862BDC20F0000DFD11 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				4FC5C5952BDC233C000DFD11 /* BigBangTest.json */,
 				4FC5C5872BDC20F0000DFD11 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4FC5C58E2BDC21AC000DFD11 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4FC5C58F2BDC21B3000DFD11 /* Components */,
+				4FC5C5822BDC20ED000DFD11 /* ContentView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4FC5C58F2BDC21B3000DFD11 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		4FC5C5902BDC21BB000DFD11 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		4FC5C5912BDC21C2000DFD11 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		4FC5C5922BDC21C9000DFD11 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4FC5C5932BDC21D0000DFD11 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4FC5C5972BDC2343000DFD11 /* BigBang.json */,
+				4FC5C5842BDC20F0000DFD11 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4FC5C5942BDC21DD000DFD11 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				4FC5C5802BDC20ED000DFD11 /* BigBangLibraryAppApp.swift */,
+			);
+			name = System;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +189,8 @@
 			files = (
 				4FC5C5882BDC20F0000DFD11 /* Preview Assets.xcassets in Resources */,
 				4FC5C5852BDC20F0000DFD11 /* Assets.xcassets in Resources */,
+				4FC5C5982BDC2343000DFD11 /* BigBang.json in Resources */,
+				4FC5C5962BDC233C000DFD11 /* BigBangTest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
