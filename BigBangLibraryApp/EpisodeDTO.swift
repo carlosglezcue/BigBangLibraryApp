@@ -31,9 +31,9 @@ extension EpisodeDTO {
             runtime: runtime,
             image: image,
             summary: summary,
-            isFavourite: true,
-            wasSeen: true,
-            rating: 4.0,
+            isFavourite: Bool.random(),
+            wasSeen: Bool.random(),
+            rating: Double.random(in: 0...5),
             notes: "cdscsdfewcbdsacjsdncsdjdslkjcjsdsdcdscnasbcds"
         )
     }

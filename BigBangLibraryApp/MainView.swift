@@ -8,17 +8,32 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @EnvironmentObject private var viewModel: MainViewModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            Group {
+                List {
+                    ForEach(viewModel.episodesBySeason, id: \.self) { season in
+                        Section {
+                            ForEach(season) { episode in
+                                EspisodeRow(episode: episode)
+                            }
+                        } header: {
+                            Text("Season " + String(season.first?.season ?? .zero))
+                        }
+                    }
+                    .navigationTitle("The BigBang Episodes")
+                    .listRowBackground(Color.purple.opacity(0.5))
+                    .listRowSeparatorTint(.black)
+                }
+            }
+            .searchable(text: $viewModel.search, prompt: Text("Search episode"))
         }
-        .padding()
     }
 }
 
 #Preview {
-    MainView()
+    MainView.preview
 }

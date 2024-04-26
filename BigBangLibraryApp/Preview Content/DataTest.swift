@@ -5,7 +5,21 @@
 //  Created by carlos.gonzalez.local on 26/4/24.
 //
 
-import Foundation
+import SwiftUI
+
+struct EpisodeInteractorTest: DataInteractor {
+    func loadEpisodes() throws -> [Episode] {
+        guard let url = Bundle.main.url(
+            forResource: "BigBangTest",
+            withExtension: "json"
+        ) else { return [] }
+        let data = try Data(contentsOf: url)
+        return try JSONDecoder().decode([EpisodeDTO].self, from: data).map(\.toPresentationTest)
+    }
+    
+    func saveEpisode(episode: [Episode]) throws {
+    }
+}
 
 extension EpisodeDTO {
     var toPresentationTest: Episode {
@@ -27,16 +41,27 @@ extension EpisodeDTO {
     }
 }
 
-struct EpisodeInteractorTest: DataInteractor {
-    func loadEpisodes() throws -> [Episode] {
-        guard let url = Bundle.main.url(
-            forResource: "BigBangTest",
-            withExtension: "json"
-        ) else { return [] }
-        let data = try Data(contentsOf: url)
-        return try JSONDecoder().decode([EpisodeDTO].self, from: data).map(\.toPresentationTest)
+extension MainView {
+    static var preview: some View {
+        MainView()
+            .environmentObject(MainViewModel(interactor: EpisodeInteractor()))
     }
-    
-    func saveEpisode(episode: [Episode]) throws {
-    }
+}
+
+extension Episode {
+    static let test = Episode(
+        id: 2928,
+        url: URL(string: "https://www.tvmaze.com/episodes/2928/the-big-bang-theory-1x16-the-peanut-reaction")!,
+        name: "The Peanut Reaction",
+        season: 1,
+        number: 16,
+        airdate: "2008-05-12",
+        runtime: 30,
+        image: "12464",
+        summary: "When Penny learns that Leonard doesn't celebrate birthdays, she attempts to throw him a surprise party, but is sidetracked by Sheldon who unexpectedly gets to live out one of his greatest fantasies at an electronics store.\n",
+        isFavourite: Bool.random(),
+        wasSeen: Bool.random(),
+        rating: Double.random(in: 0...5),
+        notes: ""
+    )
 }
