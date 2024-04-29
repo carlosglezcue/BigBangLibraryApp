@@ -25,9 +25,10 @@ struct MainView: View {
                         }
                     }
                     .navigationTitle("The BigBang Episodes")
-                    .listRowBackground(Color.purple.opacity(0.5))
+                    .listRowBackground(Color.principal.opacity(0.25))
                     .listRowSeparatorTint(.black)
                 }
+                .listStyle(.plain)
             }
             .searchable(text: $viewModel.search, prompt: Text("Search episode"))
         }

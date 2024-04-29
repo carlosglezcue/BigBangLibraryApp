@@ -26,20 +26,31 @@ struct EspisodeRow: View {
                         Text("Rate:")
                             .underline()
                             .font(.caption)
+                            .foregroundStyle(.primaryText)
                             .padding(.bottom, 8)
                         RatingView(episode: episode)
                             .padding(.bottom, 15)
                         HStack {
                             Spacer()
-                            Image(systemName: episode.isFavourite ? "heart.fill" : "heart")
-                                .padding(.trailing, 20)
-                            Image(systemName: episode.wasSeen ? "eye.fill" : "eye")
+                            Button { } label: {
+                                Image(systemName: episode.isFavourite ? "heart.fill" : "heart")
+                                    .foregroundStyle(.red)
+                                    .padding(.trailing, 20)
+                            }
+                            Button { } label: {
+                                Image(systemName: episode.wasSeen ? "eye.fill" : "eye")
+                                    .foregroundStyle(episode.wasSeen ? .green : .black)
+                                    .padding(.trailing, 20)
+                            }
+                            
+                                
                         }
                     }
                     .padding(.leading, 15)
                 }
                 Text(String(episode.number) + ". " + episode.name)
-                    .font(.callout)                
+                    .font(.callout)    
+                    .foregroundStyle(.primaryText)
             }
             .padding(.vertical)
         }
