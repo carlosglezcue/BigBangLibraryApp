@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4F14AEE02BDC452400B0AA96 /* EpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14AEDF2BDC452400B0AA96 /* EpisodeRow.swift */; };
 		4F14AEE22BDC4A6E00B0AA96 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14AEE12BDC4A6E00B0AA96 /* RatingView.swift */; };
+		4F4F91D42BE4320200269CF9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F91D32BE4320200269CF9 /* DetailViewModel.swift */; };
+		4F4F91D62BE4321100269CF9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F91D52BE4321100269CF9 /* DetailView.swift */; };
 		4FC5C5812BDC20ED000DFD11 /* BigBangLibraryAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC5C5802BDC20ED000DFD11 /* BigBangLibraryAppApp.swift */; };
 		4FC5C5832BDC20ED000DFD11 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC5C5822BDC20ED000DFD11 /* MainView.swift */; };
 		4FC5C5852BDC20F0000DFD11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FC5C5842BDC20F0000DFD11 /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 /* Begin PBXFileReference section */
 		4F14AEDF2BDC452400B0AA96 /* EpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRow.swift; sourceTree = "<group>"; };
 		4F14AEE12BDC4A6E00B0AA96 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		4F4F91D32BE4320200269CF9 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		4F4F91D52BE4321100269CF9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		4FC5C57D2BDC20ED000DFD11 /* BigBangLibraryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigBangLibraryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC5C5802BDC20ED000DFD11 /* BigBangLibraryAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBangLibraryAppApp.swift; sourceTree = "<group>"; };
 		4FC5C5822BDC20ED000DFD11 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 			children = (
 				4FC5C58F2BDC21B3000DFD11 /* Components */,
 				4FC5C5822BDC20ED000DFD11 /* MainView.swift */,
+				4F4F91D52BE4321100269CF9 /* DetailView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				4FC5C5A32BDC2B3F000DFD11 /* MainViewModel.swift */,
+				4F4F91D32BE4320200269CF9 /* DetailViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -226,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FC5C5A02BDC25D1000DFD11 /* DataInteractor.swift in Sources */,
+				4F4F91D62BE4321100269CF9 /* DetailView.swift in Sources */,
 				4FC5C5832BDC20ED000DFD11 /* MainView.swift in Sources */,
 				4FC5C59C2BDC24ED000DFD11 /* Episode.swift in Sources */,
 				4F14AEE22BDC4A6E00B0AA96 /* RatingView.swift in Sources */,
@@ -234,6 +241,7 @@
 				4FC5C5A22BDC281D000DFD11 /* DataTest.swift in Sources */,
 				4FC5C59E2BDC25BA000DFD11 /* EpisodeInteractor.swift in Sources */,
 				4FC5C5812BDC20ED000DFD11 /* BigBangLibraryAppApp.swift in Sources */,
+				4F4F91D42BE4320200269CF9 /* DetailViewModel.swift in Sources */,
 				4FC5C5A42BDC2B3F000DFD11 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

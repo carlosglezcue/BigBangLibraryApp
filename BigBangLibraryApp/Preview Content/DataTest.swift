@@ -48,6 +48,15 @@ extension MainView {
     }
 }
 
+extension DetailView {
+    static var preview: some View {
+        NavigationStack {
+            DetailView(detailViewModel: DetailViewModel(episode: .test))
+                .environmentObject(MainViewModel(interactor: EpisodeInteractorTest()))
+        }
+    }
+}
+
 extension Episode {
     static let test = Episode(
         id: 2928,

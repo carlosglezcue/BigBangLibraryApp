@@ -49,4 +49,10 @@ final class MainViewModel: ObservableObject {
             print("Error al guardar: \(error)")
         }
     }
+    
+    func updateEpisode(episode: Episode) {
+        if let index = episodes.firstIndex(where: { $0.id == episode.id }) {
+            episodes[index] = episode
+        }
+    }
 }
