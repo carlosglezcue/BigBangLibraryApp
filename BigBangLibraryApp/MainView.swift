@@ -32,7 +32,7 @@ struct MainView: View {
             }
             .searchable(text: $viewModel.search, prompt: Text("Search episode"))
             .navigationDestination(for: Episode.self) { episode in
-                DetailView(episode: episode)
+                DetailView(detailViewModel: DetailViewModel(episode: episode))
             }
         }
     }

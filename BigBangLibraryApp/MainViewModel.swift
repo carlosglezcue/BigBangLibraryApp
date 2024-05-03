@@ -10,9 +10,12 @@ import SwiftUI
 final class MainViewModel: ObservableObject {
     private let interactor: DataInteractor
     
-    @Published var episodes: [Episode]
+    @Published var episodes: [Episode] {
+        didSet {
+            saveEpisode()
+        }
+    }
     @Published var search = ""
-    @Published var selected: Episode?
     
     var episodesBySeason: [[Episode]] {
         let searchFilter = episodes.filter { episode in
@@ -36,16 +39,16 @@ final class MainViewModel: ObservableObject {
     init(interactor: DataInteractor = EpisodeInteractor.shared) {
         self.interactor = interactor
         do {
-            episodes = try interactor.loadEpisodes()
+            self.episodes = try interactor.loadEpisodes()
         } catch {
-            episodes = []
+            self.episodes = []
             print(error)
         }
     }
     
     func saveEpisode() {
         do {
-            try interactor.saveEpisode(episode: episodes)
+            try interactor.saveEpisode(episodes: episodes)
         } catch {
             print("Error al guardar: \(error)")
         }

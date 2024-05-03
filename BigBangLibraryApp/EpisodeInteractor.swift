@@ -29,7 +29,8 @@ struct EpisodeInteractor: DataInteractor {
         }
     }
     
-    func saveEpisode(episode: [Episode]) throws {
-        
+    func saveEpisode(episodes: [Episode]) throws {
+        let data = try JSONEncoder().encode(episodes)
+        try data.write(to: urlDoc, options: .atomic)
     }
 }

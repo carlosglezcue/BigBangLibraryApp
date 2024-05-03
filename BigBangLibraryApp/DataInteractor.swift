@@ -9,5 +9,5 @@ import Foundation
 
 protocol DataInteractor {
     func loadEpisodes() throws -> [Episode]
-    func saveEpisode(episode: [Episode]) throws
+    func saveEpisode(episodes: [Episode]) throws
 }

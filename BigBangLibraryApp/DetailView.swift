@@ -10,9 +10,8 @@ import SwiftUI
 struct DetailView: View {
     
     @Environment(\.dismiss) private var dismiss
-    @State var note: String = ""
-    
-    let episode: Episode
+    @EnvironmentObject private var mainViewModel: MainViewModel
+    @ObservedObject var detailViewModel: DetailViewModel
     
     var body: some View {
         ZStack {
@@ -22,7 +21,7 @@ struct DetailView: View {
             
             ScrollView {
                 VStack(spacing: 20) {
-                    Image(episode.image)
+                    Image(detailViewModel.episode.image)
                         .resizable()
                         .scaledToFit()
                         .clipShape(RoundedRectangle(cornerRadius: 10.0))
@@ -34,7 +33,7 @@ struct DetailView: View {
                             .foregroundStyle(.primaryText)
                             .bold()
                         
-                        Text(episode.summary)
+                        Text(detailViewModel.episode.summary)
                             .font(.callout)
                             .foregroundStyle(.primaryText)
                     }
@@ -46,7 +45,7 @@ struct DetailView: View {
                             .foregroundStyle(.primaryText)
                             .bold()
                         
-                        Text(episode.airdate)
+                        Text(detailViewModel.episode.airdate)
                             .font(.caption)
                             .foregroundStyle(.primaryText)
                         
@@ -54,14 +53,14 @@ struct DetailView: View {
                         
                         Image(systemName: "star.fill")
                             .foregroundStyle(.yellow)
-                        Text(String(episode.rating?.binade ?? .zero))
+                        Text(String(detailViewModel.episode.rating?.binade ?? .zero))
                             .font(.caption)
                             .foregroundStyle(.primaryText)
                         
                         Spacer()
                         
-                        Image(systemName: episode.isFavourite ? "heart.fill" : "heart")
-                            .foregroundStyle(episode.isFavourite ? .red : .black)
+                        Image(systemName: detailViewModel.episode.isFavourite ? "heart.fill" : "heart")
+                            .foregroundStyle(detailViewModel.episode.isFavourite ? .red : .black)
                         
                     }
                     .padding(.bottom)
@@ -72,7 +71,7 @@ struct DetailView: View {
                             .foregroundStyle(.primaryText)
                             .padding(.leading, 8)
                         
-                        TextField("Episode Notes", text: $note)
+                        TextField("Episode Notes", text: $detailViewModel.note)
                             .font(.callout)
                             .textFieldStyle(.roundedBorder)
                     }
@@ -80,12 +79,17 @@ struct DetailView: View {
                 }
                 .padding()
             }
-            .navigationTitle("\(episode.number). " + episode.name)
+            .navigationTitle("\(detailViewModel.episode.number). " + detailViewModel.episode.name)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden()
             .toolbar {
                 ToolbarItem(placement: .navigation) {
                     Button {
+                        if !detailViewModel.note.isEmpty {
+                            if let updated = detailViewModel.updatedScore() {
+                                mainViewModel.updateEpisode(episode: updated)
+                            }
+                        }
                         dismiss()
                     } label: {
                         Image(systemName: "chevron.backward.circle.fill")
@@ -100,5 +104,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(episode: .test)
+    DetailView.preview
 }

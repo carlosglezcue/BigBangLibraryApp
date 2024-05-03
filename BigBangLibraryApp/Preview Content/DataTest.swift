@@ -17,7 +17,7 @@ struct EpisodeInteractorTest: DataInteractor {
         return try JSONDecoder().decode([EpisodeDTO].self, from: data).map(\.toPresentationTest)
     }
     
-    func saveEpisode(episode: [Episode]) throws {
+    func saveEpisode(episodes: [Episode]) throws {
     }
 }
 
@@ -49,12 +49,12 @@ extension MainView {
 }
 
 extension DetailView {
-//    static var preview: some View {
-//        NavigationStack {
-//            DetailView(detailViewModel: DetailViewModel(episode: .test))
-//                .environmentObject(MainViewModel(interactor: EpisodeInteractorTest()))
-//        }
-//    }
+    static var preview: some View {
+        NavigationStack {
+            DetailView(detailViewModel: DetailViewModel(episode: .test))
+                .environmentObject(MainViewModel(interactor: EpisodeInteractorTest()))
+        }
+    }
 }
 
 extension Episode {
