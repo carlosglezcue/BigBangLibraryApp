@@ -42,8 +42,6 @@ struct EspisodeRow: View {
                                     .foregroundStyle(episode.wasSeen ? .green : .black)
                                     .padding(.trailing, 20)
                             }
-                            
-                                
                         }
                     }
                     .padding(.leading, 15)

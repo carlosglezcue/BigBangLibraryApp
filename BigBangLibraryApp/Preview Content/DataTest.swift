@@ -49,12 +49,12 @@ extension MainView {
 }
 
 extension DetailView {
-    static var preview: some View {
-        NavigationStack {
-            DetailView(detailViewModel: DetailViewModel(episode: .test))
-                .environmentObject(MainViewModel(interactor: EpisodeInteractorTest()))
-        }
-    }
+//    static var preview: some View {
+//        NavigationStack {
+//            DetailView(detailViewModel: DetailViewModel(episode: .test))
+//                .environmentObject(MainViewModel(interactor: EpisodeInteractorTest()))
+//        }
+//    }
 }
 
 extension Episode {

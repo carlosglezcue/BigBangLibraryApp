@@ -12,6 +12,7 @@ final class MainViewModel: ObservableObject {
     
     @Published var episodes: [Episode]
     @Published var search = ""
+    @Published var selected: Episode?
     
     var episodesBySeason: [[Episode]] {
         let searchFilter = episodes.filter { episode in

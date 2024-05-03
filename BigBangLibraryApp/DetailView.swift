@@ -10,8 +10,9 @@ import SwiftUI
 struct DetailView: View {
     
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject private var viewModel: MainViewModel
-    @ObservedObject var detailViewModel: DetailViewModel
+    @State var note: String = ""
+    
+    let episode: Episode
     
     var body: some View {
         ZStack {
@@ -19,24 +20,85 @@ struct DetailView: View {
                 .foregroundStyle(.principal.opacity(0.5))
                 .ignoresSafeArea()
             
-            VStack {
-                
+            ScrollView {
+                VStack(spacing: 20) {
+                    Image(episode.image)
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 10.0))
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Summary:")
+                            .underline()
+                            .font(.callout)
+                            .foregroundStyle(.primaryText)
+                            .bold()
+                        
+                        Text(episode.summary)
+                            .font(.callout)
+                            .foregroundStyle(.primaryText)
+                    }
+                    
+                    HStack {
+                        Text("Date:")
+                            .underline()
+                            .font(.caption)
+                            .foregroundStyle(.primaryText)
+                            .bold()
+                        
+                        Text(episode.airdate)
+                            .font(.caption)
+                            .foregroundStyle(.primaryText)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(.yellow)
+                        Text(String(episode.rating?.binade ?? .zero))
+                            .font(.caption)
+                            .foregroundStyle(.primaryText)
+                        
+                        Spacer()
+                        
+                        Image(systemName: episode.isFavourite ? "heart.fill" : "heart")
+                            .foregroundStyle(episode.isFavourite ? .red : .black)
+                        
+                    }
+                    .padding(.bottom)
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Add episode note:")
+                            .font(.caption)
+                            .foregroundStyle(.primaryText)
+                            .padding(.leading, 8)
+                        
+                        TextField("Episode Notes", text: $note)
+                            .font(.callout)
+                            .textFieldStyle(.roundedBorder)
+                    }
+                    .padding(.bottom, 20)
+                }
+                .padding()
             }
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigation) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.backward.circle.fill")
-                        .foregroundStyle(Material.bar)
-                        .shadow(color: .gray.opacity(0.25), radius: 5, y: 5)
+            .navigationTitle("\(episode.number). " + episode.name)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .navigation) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.backward.circle.fill")
+                            .foregroundStyle(Material.bar)
+                            .shadow(color: .gray.opacity(0.25), radius: 5, y: 5)
+                    }
                 }
             }
         }
+        .scrollBounceBehavior(.basedOnSize)
     }
 }
 
 #Preview {
-    DetailView.preview
+    DetailView(episode: .test)
 }

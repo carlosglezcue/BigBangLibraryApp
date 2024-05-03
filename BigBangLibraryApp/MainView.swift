@@ -18,7 +18,9 @@ struct MainView: View {
                     ForEach(viewModel.episodesBySeason, id: \.self) { season in
                         Section {
                             ForEach(season) { episode in
-                                EspisodeRow(episode: episode)
+                                NavigationLink(value: episode) {
+                                    EspisodeRow(episode: episode)
+                                }
                             }
                         } header: {
                             Text("Season " + String(season.first?.season ?? .zero))
@@ -26,11 +28,12 @@ struct MainView: View {
                     }
                     .navigationTitle("The BigBang Episodes")
                     .listRowBackground(Color.principal.opacity(0.25))
-                    .listRowSeparatorTint(.black)
                 }
-                .listStyle(.plain)
             }
             .searchable(text: $viewModel.search, prompt: Text("Search episode"))
+            .navigationDestination(for: Episode.self) { episode in
+                DetailView(episode: episode)
+            }
         }
     }
 }
