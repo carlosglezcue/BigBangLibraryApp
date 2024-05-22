@@ -10,10 +10,19 @@ import SwiftUI
 final class DetailViewModel: ObservableObject {
     let episode: Episode
     
-    @Published var note: String = ""
+    @Published var notes: String = ""
+    @Published var favorited = false
+    @Published var episodeSeen = false
     
     init(episode: Episode) {
         self.episode = episode
+        initValues(episode: episode)
+    }
+    
+    func initValues(episode: Episode) {
+        notes = episode.notes ?? ""
+        favorited = episode.isFavourite
+        episodeSeen = episode.wasSeen
     }
     
     func updatedScore() -> Episode? {
@@ -27,10 +36,10 @@ final class DetailViewModel: ObservableObject {
             runtime: episode.runtime,
             image: episode.image,
             summary: episode.summary,
-            isFavourite: episode.isFavourite,
-            wasSeen: episode.wasSeen,
+            isFavourite: favorited,
+            wasSeen: episodeSeen,
             rating: episode.rating,
-            notes: note
+            notes: notes
         )
     }
 }

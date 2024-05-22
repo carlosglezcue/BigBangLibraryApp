@@ -31,10 +31,10 @@ extension EpisodeDTO {
             runtime: runtime,
             image: image,
             summary: summary,
-            isFavourite: Bool.random(),
-            wasSeen: Bool.random(),
+            isFavourite: false,
+            wasSeen: false,
             rating: Double.random(in: 0...5),
-            notes: "cdscsdfewcbdsacjsdncsdjdslkjcjsdsdcdscnasbcds"
+            notes: ""
         )
     }
 }

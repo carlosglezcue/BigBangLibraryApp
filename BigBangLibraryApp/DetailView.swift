@@ -71,7 +71,7 @@ struct DetailView: View {
                             .foregroundStyle(.primaryText)
                             .padding(.leading, 8)
                         
-                        TextField("Episode Notes", text: $detailViewModel.note)
+                        TextField("Episode Notes", text: $detailViewModel.notes)
                             .font(.callout)
                             .textFieldStyle(.roundedBorder)
                     }
@@ -85,10 +85,8 @@ struct DetailView: View {
             .toolbar {
                 ToolbarItem(placement: .navigation) {
                     Button {
-                        if !detailViewModel.note.isEmpty {
-                            if let updated = detailViewModel.updatedScore() {
-                                mainViewModel.updateEpisode(episode: updated)
-                            }
+                        if let updated = detailViewModel.updatedScore() {
+                            mainViewModel.updateEpisode(episode: updated)
                         }
                         dismiss()
                     } label: {
