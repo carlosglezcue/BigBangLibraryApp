@@ -33,7 +33,7 @@ extension EpisodeDTO {
             summary: summary,
             isFavourite: false,
             wasSeen: false,
-            rating: Double.random(in: 0...5),
+            rating: 0.0,
             notes: ""
         )
     }

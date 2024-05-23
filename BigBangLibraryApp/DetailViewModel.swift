@@ -11,8 +11,9 @@ final class DetailViewModel: ObservableObject {
     let episode: Episode
     
     @Published var notes: String = ""
-    @Published var favorited = false
-    @Published var episodeSeen = false
+    @Published var favorited: Bool = false
+    @Published var episodeSeen: Bool = false
+    @Published var ratingByUser: Double = 0.0
     
     init(episode: Episode) {
         self.episode = episode
@@ -23,6 +24,7 @@ final class DetailViewModel: ObservableObject {
         notes = episode.notes ?? ""
         favorited = episode.isFavourite
         episodeSeen = episode.wasSeen
+        ratingByUser = episode.rating ?? .zero
     }
     
     func updatedScore() -> Episode? {
@@ -38,8 +40,15 @@ final class DetailViewModel: ObservableObject {
             summary: episode.summary,
             isFavourite: favorited,
             wasSeen: episodeSeen,
-            rating: episode.rating,
+            rating: ratingByUser,
             notes: notes
         )
     }
 }
+
+/*
+ Cada episodio deberá contar con un detalle. Será navegable desde la
+ tabla o desde el Grid de favoritos. Lo que se muestre en el Grid lo
+ decide cada persona para su ejercicio.
+ La tabla deberá permitir buscar por el nombre del episodio.
+ */

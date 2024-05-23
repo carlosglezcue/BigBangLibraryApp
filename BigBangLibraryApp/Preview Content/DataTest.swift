@@ -33,9 +33,9 @@ extension EpisodeDTO {
             runtime: runtime,
             image: image,
             summary: summary,
-            isFavourite: Bool.random(),
-            wasSeen: Bool.random(),
-            rating: Double.random(in: 0...5),
+            isFavourite: false,
+            wasSeen: false,
+            rating: 0.0,
             notes: ""
         )
     }
@@ -68,9 +68,9 @@ extension Episode {
         runtime: 30,
         image: "12464",
         summary: "When Penny learns that Leonard doesn't celebrate birthdays, she attempts to throw him a surprise party, but is sidetracked by Sheldon who unexpectedly gets to live out one of his greatest fantasies at an electronics store.\n",
-        isFavourite: Bool.random(),
-        wasSeen: Bool.random(),
-        rating: Double.random(in: 0...5),
+        isFavourite: false,
+        wasSeen: false,
+        rating: 0.0,
         notes: ""
     )
 }

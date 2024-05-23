@@ -9,55 +9,44 @@ import SwiftUI
 
 struct RatingView: View {
     
-    let episode: Episode
+    @Binding var ratingByUser: Double
     
     var body: some View {
-            HStack {
-                if let rating = episode.rating {
-                    switch rating {
-                        case 0...1:
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                        case 1...2:
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                        case 2...3:
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                        case 3...4:
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star")
-                        case 4...5:
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                        default:
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                    }
-                }
+        HStack {
+            Button {
+                ratingByUser = 1.0
+            } label: {
+                Image(systemName: ratingByUser >= 1.0 ? "star.fill" : "star")
             }
-            .foregroundStyle(.yellow)
+            
+            Button {
+                ratingByUser = 2.0
+            } label: {
+                Image(systemName: ratingByUser >= 2.0 ? "star.fill" : "star")
+            }
+            
+            Button {
+                ratingByUser = 3.0
+            } label: {
+                Image(systemName: ratingByUser >= 3.0 ? "star.fill" : "star")
+            }
+            
+            Button {
+                ratingByUser = 4.0
+            } label: {
+                Image(systemName: ratingByUser >= 4.0 ? "star.fill" : "star")
+            }
+            
+            Button {
+                ratingByUser = 5.0
+            } label: {
+                Image(systemName: ratingByUser == 5.0 ? "star.fill" : "star")
+            }
+        }
+        .foregroundStyle(.yellow)
     }
 }
 
 #Preview {
-    RatingView(episode: .test)
+    RatingView(ratingByUser: .constant(0.0))
 }

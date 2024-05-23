@@ -14,7 +14,7 @@ struct BigBangLibraryAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView()
+            TabBarView()
                 .environmentObject(mainViewModel)
         }
     }

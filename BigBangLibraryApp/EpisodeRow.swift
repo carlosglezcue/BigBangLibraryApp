@@ -23,13 +23,22 @@ struct EspisodeRow: View {
                         .padding(.bottom, 10)
                     
                     VStack(alignment: .leading) {
-                        Text("Rate:")
-                            .underline()
-                            .font(.caption)
-                            .foregroundStyle(.primaryText)
-                            .padding(.bottom, 8)
-                        RatingView(episode: episode)
-                            .padding(.bottom, 15)
+                        HStack {
+                            Text("Rate:")
+                                .underline()
+                                .font(.caption)
+                                .foregroundStyle(.primaryText)
+                                .padding(.trailing)
+                            
+                            
+                            Image(systemName: "star.fill")
+                                .foregroundStyle(.yellow)
+                            Text(String(episode.rating ?? .zero))
+                                .font(.caption)
+                                .foregroundStyle(.primaryText)
+                        }
+                        .padding(.trailing)
+                        
                         HStack {
                             Spacer()
                             Button { } label: {
@@ -37,12 +46,14 @@ struct EspisodeRow: View {
                                     .foregroundStyle(.red)
                                     .padding(.trailing, 20)
                             }
+                            
                             Button { } label: {
                                 Image(systemName: episode.wasSeen ? "eye.fill" : "eye")
                                     .foregroundStyle(episode.wasSeen ? .green : .black)
-                                    .padding(.trailing, 20)
+                                    .padding(.trailing, 30)
                             }
                         }
+                        .padding(.top)
                     }
                     .padding(.leading, 15)
                 }

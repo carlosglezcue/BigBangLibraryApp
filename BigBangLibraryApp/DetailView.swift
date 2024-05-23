@@ -51,31 +51,29 @@ struct DetailView: View {
                         
                         Spacer()
                         
-                        Image(systemName: "star.fill")
-                            .foregroundStyle(.yellow)
-                        Text(String(detailViewModel.episode.rating?.binade ?? .zero))
-                            .font(.caption)
-                            .foregroundStyle(.primaryText)
+                        Button {
+                            detailViewModel.episodeSeen.toggle()
+                        } label: {
+                            Image(systemName: detailViewModel.episodeSeen ? "eye.fill" : "eye")
+                                .foregroundStyle(detailViewModel.episodeSeen ? .green : .black)
+                                .padding(.trailing, 30)
+                        }
                         
-                        Spacer()
-                        
-                        Image(systemName: detailViewModel.episode.isFavourite ? "heart.fill" : "heart")
-                            .foregroundStyle(detailViewModel.episode.isFavourite ? .red : .black)
-                        
+                        Button {
+                            detailViewModel.favorited.toggle()
+                        } label: {
+                            Image(systemName: detailViewModel.favorited ? "heart.fill" : "heart")
+                                .foregroundStyle(detailViewModel.favorited ? .red : .black)
+                        }
                     }
                     .padding(.bottom)
                     
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Add episode note:")
-                            .font(.caption)
-                            .foregroundStyle(.primaryText)
-                            .padding(.leading, 8)
-                        
-                        TextField("Episode Notes", text: $detailViewModel.notes)
-                            .font(.callout)
-                            .textFieldStyle(.roundedBorder)
-                    }
-                    .padding(.bottom, 20)
+                    
+                    RatingView(ratingByUser: $detailViewModel.ratingByUser)
+                        .padding(.bottom)
+                    
+                    EpisodeNotesView(notes: $detailViewModel.notes)
+                        .padding(.bottom)
                 }
                 .padding()
             }
