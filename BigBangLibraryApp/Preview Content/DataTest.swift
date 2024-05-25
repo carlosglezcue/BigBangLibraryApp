@@ -57,6 +57,13 @@ extension DetailView {
     }
 }
 
+extension FavoritedListView {
+    static var preview: some View {
+        FavoritedListView()
+            .environmentObject(MainViewModel(interactor: EpisodeInteractor()))
+    }
+}
+
 extension Episode {
     static let test = Episode(
         id: 2928,
