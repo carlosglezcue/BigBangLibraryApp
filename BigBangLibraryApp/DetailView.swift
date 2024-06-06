@@ -14,11 +14,6 @@ struct DetailView: View {
     @ObservedObject var detailViewModel: DetailViewModel
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 8)
-                .foregroundStyle(.principal.opacity(0.5))
-                .ignoresSafeArea()
-            
             ScrollView {
                 VStack(spacing: 20) {
                     Image(detailViewModel.episode.image)
@@ -26,16 +21,23 @@ struct DetailView: View {
                         .scaledToFit()
                         .clipShape(RoundedRectangle(cornerRadius: 10.0))
                     
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Summary:")
-                            .underline()
-                            .font(.callout)
-                            .foregroundStyle(.primaryText)
+                    VStack(alignment: .center, spacing: 10) {
+                        Text("Season \(detailViewModel.episode.season)")
+                            .font(.title3)
                             .bold()
+                            .foregroundStyle(.primary)
                         
-                        Text(detailViewModel.episode.summary)
-                            .font(.callout)
-                            .foregroundStyle(.primaryText)
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Summary:")
+                                .underline()
+                                .font(.callout)
+                                .foregroundStyle(.primaryText)
+                                .bold()
+                            
+                            Text(detailViewModel.episode.summary)
+                                .font(.callout)
+                                .foregroundStyle(.primaryText)
+                        }
                     }
                     
                     HStack {
@@ -94,9 +96,9 @@ struct DetailView: View {
                     }
                 }
             }
+            .scrollBounceBehavior(.basedOnSize)
+            .background(.principal.opacity(0.5))
         }
-        .scrollBounceBehavior(.basedOnSize)
-    }
 }
 
 #Preview {
