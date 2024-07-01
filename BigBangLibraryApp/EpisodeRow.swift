@@ -17,7 +17,8 @@ struct EspisodeRow: View {
                 HStack {
                     Image(episode.image)
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
+                        .frame(width: 150, height: 100)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .shadow(color: .black.opacity(0.5), radius: 5, x: 5, y: 5)
                         .padding(.bottom, 10)
@@ -61,7 +62,7 @@ struct EspisodeRow: View {
                     .font(.callout)    
                     .foregroundStyle(.primaryText)
             }
-            .padding(.vertical)
+//            .padding(.vertical)
         }
     }
 }

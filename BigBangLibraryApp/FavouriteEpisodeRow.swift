@@ -16,7 +16,8 @@ struct FavouriteEpisodeRow: View {
             ZStack(alignment: .bottomLeading) {
                 Image(episode.image)
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
+                    .frame(width: 150, height: 75)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .shadow(color: .black.opacity(0.5), radius: 5, x: 5, y: 5)
                 

@@ -9,17 +9,32 @@ import SwiftUI
 
 struct TabBarView: View {
     
+    @State private var isActive: Bool = false
+    
     var body: some View {
-        
-        TabView {
-            MainView()
-                .tabItem {
-                    Label("Episodes", systemImage: "list.bullet.clipboard.fill")
+        VStack {
+            if isActive {
+                TabView {
+                    MainView()
+                        .tabItem {
+                            Label("Episodes", systemImage: "list.bullet.clipboard.fill")
+                        }
+                    FavoritedListView()
+                        .tabItem {
+                            Label("Favorites", systemImage: "star.fill")
+                        }
                 }
-            FavoritedListView()
-                .tabItem {
-                    Label("Favorites", systemImage: "star.fill")
-                }
+            } else {
+                SplashScreen()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            withAnimation {
+                                self.isActive = true
+                            }
+                        }
+                    }
+            }
+            
         }
     }
 }
